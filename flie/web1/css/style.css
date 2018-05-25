@@ -1,0 +1,201 @@
+@charset "utf-8";
+* {
+	margin: 0;
+	padding: 0;
+}
+body{
+	background:#e6d1b3 ;
+}
+span {
+	color: #593e1f;
+	font-size: 0.5rem;
+	display: inline-block;
+	font-family: "楷体";
+	font-weight: 600;
+}
+
+.page_1 {
+	width: 100%;
+	height: 16.4rem;
+	background-image: url(../images/文字页1.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+.page_1 .sj1 {
+	position: absolute;
+	left:53%;
+	top: 22.3%;
+}
+
+.page_1 .sj2 {
+	position: absolute;
+	left: 39%;
+	top: 29.2%;
+}
+
+.page_1 .sj3 {
+	position: absolute;
+	left: 37%;
+	top: 35.5%;
+}
+
+.page_2 {
+	width: 100%;
+	height: 16.4rem;
+	/*background: red;*/
+	background-image: url(../images/文字页2.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+.page_2 .sj4 {
+	position: absolute;
+	left: 67.5%;
+	top: 22.8%;
+}
+
+.page_2 .sj5 {
+	position: absolute;
+	left: 67%;
+	top: 29.2%;
+}
+
+.page_3 {
+	width: 100%;
+	height: 16.4rem;
+	/*background: red;*/
+	background-image: url(../images/文字页3.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+.page_3 .sj6 {
+	position: absolute;
+	left: 28%;
+	top: 22.3%;
+	font-size: 0.6rem;
+}
+
+.page_4 {
+	width: 100%;
+	height: 16.4rem;
+	/*background: red;*/
+	background-image: url(../images/文字页4.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+.page_4 .sj7 {
+	position: absolute;
+	left: 73%;
+	top: 22.7%;
+}
+
+.page_5 {
+	width: 100%;
+	height: 16.4rem;
+	background-image: url(../images/文字页5.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+.page_5 .sj8 {
+	position: absolute;
+	left: 53%;
+	top: 22.9%;
+}
+
+.page_5 .sj9 {
+	position: absolute;
+	left: 67%;
+	top: 29%;
+}
+
+.page_7 {
+	width: 100%;
+	height: 16.4rem;
+	/*background: red;*/
+	background-image: url(../images/文字页6.jpg);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+.btn {
+	height: 1.5rem;
+	width: 60%;
+	border: 0rem solid #FFFFFF;
+	border-radius: 0.5rem;
+	color: #fff;
+	font-weight: 500;
+	position: absolute;
+	left: 20%;
+	bottom: 17%;
+	line-height: 3rem;
+}
+
+.btn img {
+	width: 100%;
+	height: 100%
+}
+
+.swiper-slide-active:last-child {
+	overflow: hidden;
+}
+
+#down {
+	width: 0.8rem;
+	height: 0.8rem;
+	background: #000000;
+	border: 0.013333rem solid yellow;
+	border-radius: 50%;
+	border: 0rem solid #fff;
+	background: url(../images/yellow_arrow_down_44.png) no-repeat center;
+	background-size: 100% 100%;
+	position: absolute;
+	left:48%;
+	bottom: 2%;
+	cursor: pointer;
+	animation: nextBtn 3s ease-in-out infinite alternate;
+	transform: r z-index: 99999;
+}
+
+@keyframes nextBtn {
+	0% {
+		bottom: 3%
+	}
+	50% {
+		bottom: 2%
+	}
+	100% {
+		bottom: 3%
+	}
+}
+
+
+
+#top {
+	width: 0.8rem;
+	height: 0.8rem;
+	background: #000000;
+	background: url(../images/yellow_arrow_up_44.png) no-repeat center;
+	background-size: 100% 100%;
+	position: absolute;
+	left:48%;
+	top: 1%;
+	cursor: pointer;
+	animation: top 3s ease-in-out infinite alternate;
+	transform: r z-index: 99999;
+}
+
+@keyframes top {
+	0% {
+		top: 2%
+	}
+	50% {
+		top: 1%
+	}
+	100% {
+		top: 2%
+	}
+}

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ch">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>2018,谁将成为拯救人类"语言危机"的talk king</title>
+		<meta charset="utf-8">
+		<meta http-equiv="pragma" content="no-cache">
+		<meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+		<meta http-equiv="expires" content="0">
+		<meta name="keywords" content="" />
+		<meta name="description" content="" />
+		<meta name="apple-touch-fullscreen" content="yes">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta http-equiv="Expires" content="-1">
+		<meta http-equiv="pragram" content="no-cache">
+		<meta name="sharecontent" data-msg-img="../images/logo2.jpg" ignoreapd="1" data-msg-title="" data-msg-content="" data-msg-callback="" data-line-img="../images/logo2.jpg" data-line-title="" data-line-callback="">
+		<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+		<script type="text/javascript">
+			if(/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+				var version = parseFloat(RegExp.$1);
+				if(version > 2.3) {
+					var phoneScale = parseInt(window.screen.width) / 640;
+					document.write('<meta name="viewport" content="width=640, minimum-scale = ' + phoneScale + ', maximum-scale = ' + phoneScale + ', target-densitydpi=device-dpi">');
+				} else {
+					document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi">');
+				}
+			} else {
+				document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">');
+			}
+			//微信去掉下方刷新栏
+			if(navigator.userAgent.indexOf('MicroMessenger') >= 0) {
+				document.addEventListener('WeixinJSBridgeReady', function() {
+					//WeixinJSBridge.call('hideToolbar');
+				});
+			}
+		</script>
+		<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">
+		<link rel="stylesheet" type="text/css" href="../css/app.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/play.css">
+
+		<style type="text/css">
+			#showAndhide {
+				position: absolute;
+				left: 16em;
+				top: 25em;
+				z-index: 99999;
+			}
+			
+			#showAndhide img {
+				width: 15em;
+				height: 10em;
+			}
+			
+			#showAndhide2 {
+				position: absolute;
+				left: 16em;
+				top: 25em;
+				z-index: 99999;
+			}
+			
+			#showAndhide2 img {
+				width: 15em;
+				height: 10em;
+			}
+		</style>
+
+	</head>
+
+	<body class="app appBg2 appBg1">
+
+		<header class="app-header">
+
+		</header>
+
+		<section class="app-content">
+
+			<section class="page page-index z-current" data-plugin-type="info_front" style="-webkit-transform: none; -webkit-transition: none; transition: none; background-image: url(../images/page1.png);">
+				<section class="page-content"></section>
+				<video id="my-video" class="video-js" controls preload="auto" width="640" height="264" data-setup="{}">
+					<source src="https://rb.sunlands.com/images/one.mp4" id="#video_ogg" type="video/mp4"></source>
+				</video>
+				<div class="u-guideWrap">
+					<a href="javascript:void(0);" class="u-guideTop z-move"></a>
+				</div>
+			</section>
+
+			<section class="page page-link" data-plugin-type="info_link" style="background-image: url(../images/page2.png);">
+				<section class="page-content">
+					<div class="m-link" style="top:600px"></div>
+				</section>
+				<video id="my-video1" class="video-js1" controls preload="auto" width="640" height="264" data-setup="{}">
+					<source src="https://rb.sunlands.com/images/two.mp4" id="#video_ogg" type="video/mp4"></source>
+				</video>
+				<div class="u-guideWrap">
+					<a href="javascript:void(0);" class="u-guideTop z-move"></a>
+				</div>
+			</section>
+
+			<section class="page page-link" data-plugin-type="info_link" style="background-image: url(../images/page3.png);">
+				<section class="page-content">
+					<div class="m-link" style="top:600px"></div>
+				</section>
+
+				<div id="showAndhide">
+
+					<img src="../images/shuru.png" />
+				</div>
+				<div id="showAndhide2">
+
+					<img src="../images/alert_03.png" />
+				</div>
+
+				<div id="EmailBox">
+					<input type="text" id="input" value=""/>
+					<span id="span">@sunlands.com</span>
+				</div>
+				<div id="button">
+					<img src="../images/button.png" class="button" />
+				</div>
+			</section>
+
+		</section>
+		<footer class="app-footer"></footer>
+		<script type="text/javascript" src="../js/init.min.js"></script>
+		<script type="text/javascript" src="../js/new_wxshare.js"></script>
+		<script type="text/javascript" src="../js/jquery-2.2.3.min.js"></script>
+
+	</body>
+
+</html>
+<script type="text/javascript">
+	$(function() {
+		if(location.href.indexOf('?') >= 0) {
+			location.href = 'https://rb.sunlands.com/shangde.html'
+		}
+	})
+	$("#showAndhide").hide()
+	$("#showAndhide2").hide()
+	function showAndhide() {
+		$("#showAndhide").show()
+		setTimeout(function() {
+			$("#showAndhide").hide()
+
+		}, 2000)
+
+	}
+
+	function showAndhide2() {
+		$("#showAndhide2").show()
+		setTimeout(function() {
+			$("#showAndhide2").hide()
+
+		}, 2000)
+
+	}
+	$("#button").click(function() {
+		var email = $("#input").val();
+		console.log(email);
+		var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*$"); //正则表达式
+		if(email === ""){ //输入不能为空
+					showAndhide()
+					var email = $("#input").prop("value", "");
+					
+		}else if(!reg.test(email)){ //正则验证不通过，格式不对
+					showAndhide()
+					var email = $("#input").prop("value", "");
+					
+		}else{
+			$.ajax({
+				type: "post",
+				url: "https://rb.sunlands.com/summary/video/insertVideoEmail.do",
+				async: true,
+				data: {
+					email: email + "@sunlands.com"
+				},
+				dataType: "json",
+				success: function(data) {
+					showAndhide2()
+					var email = $("#input").prop("value", "");
+
+				}
+			});
+		}
+
+	})
+
+
+	$.ajax({
+		type: "get",
+		url: "https://rb.sunlands.com/summary/user/getWXConfig.do?url=" + location.href,
+		async: true,
+		data: {},
+		dataType: "json",
+		success: function(data) {
+			var appId = data.appId;
+			var nonceStr = data.nonceStr;
+			var signature = data.signature;
+			var timestamp = data.timestamp;
+			wx.config({
+
+				debug: false, // 开启调试模式,调用的所有api的返回值会在客户端出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+				appId: appId, // 必填，公众号的唯一标识
+				timestamp: timestamp, // 必填，生成签名的时间戳
+				nonceStr: nonceStr, // 必填，生成签名的随机串
+				signature: signature,
+				jsApiList: ['checkJsApi', 'onMenuShareTimeline', 'onMenuShareAppMessage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+			});
+		}
+	});
+	wx.ready(function() {
+		wx.hideOptionMenu();
+		wx.showOptionMenu();
+		wx.onMenuShareTimeline({
+			title: '尚德机构脱口秀震撼来袭',
+			desc: '2018尚德人必看的脱口秀节目，拯救人类文明，需要你的支持。',
+			link: 'https://rb.sunlands.com/shangde.html',
+			imgUrl: 'https://rb.sunlands.com/images/logo2.jpg',
+			trigger: function(res) {},
+			success: function(res) {},
+			cancel: function(res) {},
+			fail: function(res) {}
+		});
+		wx.onMenuShareAppMessage({
+			title: '尚德机构脱口秀震撼来袭',
+			desc: '2018尚德人必看的脱口秀节目，拯救人类文明，需要你的支持。',
+			link: 'https://rb.sunlands.com/shangde.html',
+			imgUrl: 'https://rb.sunlands.com/images/logo2.jpg',
+			trigger: function(res) {},
+			success: function(res) {},
+			cancel: function(res) {},
+			fail: function(res) {}
+		});
+	});
+</script>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>尚德2017年度报告</title>
+		<script type="text/javascript" src="../js/flexible.js"></script>
+		<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+		<script type="text/javascript" src="../js/jquery-2.1.0.js"></script>
+		<style type="text/css">
+			.btn {
+				height: 1.2rem;
+				width: 55%;
+				background: #ebd7b5;
+				border: 0rem solid #FFFFFF;
+				border-radius: 0.5rem;
+				color: #333333;
+				font-weight: 500;
+				position: absolute;
+				left: 2.3rem;
+				bottom: 6%;
+				text-align: center;
+				line-height: 1.2rem;
+			}
+			.EmailBox {
+				width: 58%;
+				height: 1.33333rem;
+				position: absolute;
+				bottom: 32%;
+				left: 0.133333rem;
+				margin-left: 2.2rem;
+				line-height: 1.33333rem;
+			}
+			.IMG {
+				width: 85%;
+				position: absolute;
+				top: -1rem;
+			}
+			.input1 {
+				height: 0.8rem;
+				width: 3rem;
+				float: left;
+				border: #FFFFFF solid 0rem;
+				padding-left: 0.2rem;
+			}
+			.input1::-webkit-input-placeholder {
+				font-size: 0.3rem
+			}
+			.input2 {
+				display: block;
+				float: left;
+				height: 0.79555rem;
+				width: 2.28rem;
+				color: #FFFFFF;
+				background-color: #aaa59e;
+				line-height: 0.82rem;
+				font-size: 0.3rem;
+				overflow: hidden;
+			}
+			.sr{
+				width:1.866666rem;
+				height: 0.8rem;
+				position: absolute;
+				top: -0.9rem;
+			}
+			#box {
+				width: 100%;
+				height: 16rem;
+				background: #000000;
+				display: block;
+				background-image: url(../images/欢迎页_02.png);
+				background-repeat: no-repeat;
+				background-size: 100% 100%;
+				position: relative;
+			}
+			* {
+				padding: 0;
+				margin: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div class="EmailBox">
+				<img src="../images/shuru_03.png" class="sr" />
+				<img src="../images/提示框.png" class="IMG" />
+				<input type="text" class="input1" placeholder="请输入企业邮箱"/>
+				<span class="input2">@sunlands.com</span>
+			</div>
+			<div class="btn">开启我的年度报告</div>
+			<!--<img src="../images/lo.JPEG"/>-->
+		</div>
+	</body>
+</html>
+<script>
+	$(function(){
+		if(location.href.indexOf('?')>=0){
+			location.href='https://rb.sunlands.com'
+		}
+	})
+	
+	$(".IMG").hide()
+	$(".sr").show()
+	$(".input1").focus(function() {
+		$(".sr").hide()
+	});
+
+	var browser = {
+		versions: function() {
+			var u = navigator.userAgent,
+				app = navigator.appVersion;
+			return {
+				trident: u.indexOf('Trident') > -1, //IE内核
+				presto: u.indexOf('Presto') > -1, //opera内核
+				webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+				gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+				mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+				ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+				android: u.indexOf('Android') > -1 || u.indexOf('Adr') > -1, //android终端
+				iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
+				iPad: u.indexOf('iPad') > -1, //是否iPad
+				webApp: u.indexOf('Safari') == -1, //是否web应该程序，没有头部与底部
+				weixin: u.indexOf('MicroMessenger') > -1, //是否微信 （2015-01-22新增）
+				qq: u.match(/\sQQ/i) == " qq" //是否QQ
+			};
+		}(),
+		language: (navigator.browserLanguage || navigator.language).toLowerCase()
+	}
+	//判断是否是微信浏览器
+	if(!browser.versions.weixin) {
+		window.location.href = "404.html"
+	} else {
+		set();
+		claer()
+	}
+	var t
+	//延时
+	function set() {
+		t = setTimeout(function() {}, 2000)
+	}
+	//清除延时
+	function claer() {
+		clearTimeout(t)
+	}
+
+	$(".btn").click(function() {
+		var email = $(".input1").val()
+		var c = localStorage.setItem("Email", email)
+		$.ajax({
+			type: "get",
+			url: "https://rb.sunlands.com/summary/user/insertUser.do",
+			async: true,
+			data: {
+				email: email
+			},
+			success: function(data) {
+				console.log(data)
+				if(email === "" || data.resultCode === -1 || data.resultCode === 1) {
+					$(".IMG").show()
+					setTimeout(function() {
+						$(".IMG").hide()
+					}, 3000)
+				} else if(data.resultCode === 0) {
+					var set = sessionStorage.setItem("setData", email)
+					window.location.href = "slide.html"
+				}
+			}
+		});
+	})
+	
+	$.ajax({
+		type: "get",
+		url: "https://rb.sunlands.com/summary/user/getWXConfig.do?url=" + location.href,
+		async: true,
+		data: {},
+		dataType: "json",
+		success: function(data) {
+			var appId = data.appId;
+			var nonceStr = data.nonceStr;
+			var signature = data.signature;
+			var timestamp = data.timestamp;
+			wx.config({
+				
+				debug: false, // 开启调试模式,调用的所有api的返回值会在客户端出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+				appId: appId, // 必填，公众号的唯一标识
+				timestamp: timestamp, // 必填，生成签名的时间戳
+				nonceStr: nonceStr, // 必填，生成签名的随机串
+				signature: signature,
+				jsApiList: ['checkJsApi', 'onMenuShareTimeline', 'onMenuShareAppMessage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+			});
+		}
+	});
+	wx.ready(function() {
+		wx.hideOptionMenu();
+		wx.showOptionMenu();
+		wx.onMenuShareTimeline({
+			title: '我的尚德2017年度报告',
+			desc: '亲爱的家人，这一年，尚德有你也有我。',
+			link: 'https://rb.sunlands.com',
+			imgUrl: 'https://rb.sunlands.com/images/logo.jpg',
+			trigger: function(res) {},
+			success: function(res) {},
+			cancel: function(res) {},
+			fail: function(res) {}
+		});
+		wx.onMenuShareAppMessage({
+			title: '我的尚德2017年度报告',
+			desc: '亲爱的家人，这一年，尚德有你也有我。',
+			link: 'https://rb.sunlands.com',
+			imgUrl: 'https://rb.sunlands.com/images/logo.jpg',
+			trigger: function(res) {},
+			success: function(res) {},
+			cancel: function(res) {},
+			fail: function(res) {}
+		});
+	});
+</script>

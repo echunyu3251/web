@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>尚德2017年度报告</title>
+		<link rel="stylesheet" type="text/css" href="../css/fenxiang.css" />
+		<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+		<script type="text/javascript" src="../js/jquery-2.1.0.js"></script>
+		<script src="../js/flexible.js"></script>
+	</head>
+	<body>
+		<div class="box">
+			<img src="" id="emptyImgUrl" />
+			<div class="ErWeiMaAndWenZi">
+				<div class="erweima">
+					<img src="../images/1517814030.png" />
+				</div>
+				<span class="wenzi">扫码查看我的报告</span>
+			</div>
+			<div class="zkyb">
+				<img src="../images/分享页1(1)_09.png" class="a" />
+			</div>
+		</div>
+	</body>
+</html>
+<script>
+	if(sessionStorage.getItem("setData") === "null") {
+		setTimeout(function() {
+			window.location.href = "index.html"
+		})
+	}
+	getImg = localStorage.getItem("setImg");
+	var getData = sessionStorage.getItem("setData");
+	if(getImg === 'null') {
+		//用随机图片替换空图片的方法
+		function randomImgUrl() {
+			var ImgUrlList = ["吃鸡", "666", "call", "full", "佛系", "旺"];
+			emptyImgUrl = document.getElementById("emptyImgUrl");
+			num = Math.floor(Math.random() * ImgUrlList.length);
+			RandomImgUrl = emptyImgUrl.src = "../images/" + ImgUrlList[num] + ".png";
+		}
+		randomImgUrl()
+		$.ajax({
+			type: "get",
+			url: "https://rb.sunlands.com/summary/user/updateResultImg.do",
+			data: {
+				email: getData,
+				resultImg: RandomImgUrl
+			},
+			async: true,
+			success: function(data) {}
+		});
+	} else {
+		$(".box").append("<img src=" + getImg + " class='hover'/>")
+	}
+	$(".a").click(function() {
+		window.location.href = "slide.html"
+	})
+	$.ajax({
+		type: "get",
+		url: "https://rb.sunlands.com/summary/user/getWXConfig.do?url=https://rb.sunlands.com/fenxiang.html",
+		async: false,
+		data: {},
+		dataType: "json",
+		success: function(data) {
+			var appId = data.appId
+			var nonceStr = data.nonceStr
+			var signature = data.signature
+			var timestamp = data.timestamp
+			wx.config({
+				debug: false, // 开启调试模式,调用的所有api的返回值会在客户端出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+				appId: appId, // 必填，公众号的唯一标识
+				timestamp: timestamp, // 必填，生成签名的时间戳
+				nonceStr: nonceStr, // 必填，生成签名的随机串
+				signature: signature,
+				jsApiList: ['checkJsApi', 'onMenuShareTimeline', 'onMenuShareAppMessage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+			});
+		}
+	});
+	wx.ready(function() {
+		wx.hideOptionMenu();
+		wx.showOptionMenu();
+		wx.onMenuShareTimeline({
+			title: '我的尚德2017年度报告',
+			desc: "亲爱的家人，这一年，尚德有你也有我。",
+			link: 'https://rb.sunlands.com',
+			imgUrl: 'https://rb.sunlands.com/images/logo.jpg',
+			trigger: function(res) {},
+			success: function(res) {},
+			cancel: function(res) {},
+			fail: function(res) {}
+		});
+		wx.onMenuShareAppMessage({
+			title: '我的尚德2017年度报告',
+			desc: "亲爱的家人，这一年，尚德有你也有我。",
+			link: 'https://rb.sunlands.com',
+			imgUrl: 'https://rb.sunlands.com/images/logo.jpg',
+			trigger: function(res) {},
+			success: function(res) {},
+			cancel: function(res) {},
+			fail: function(res) {}
+		});
+	});
+</script>

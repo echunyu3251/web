@@ -1,0 +1,63 @@
+查询:
+		http://39.107.110.179:8080/summary/user/getUserCount.do
+参数:openID
+
+添加:
+		http://39.107.110.179:8080/summary/user/insertUser.do
+
+参数:openid;email
+///////////////////////////////////////////////////////////////////////////////////////////////////
+获取
+
+		http://39.107.110.179:8080/summary/user/getResult.do
+参数openid
+
+resultCode=-1参数为空
+
+
+resultCode=1匹配不到数据
+
+resultCode=2学院的信息为空，已经离职的那种
+
+resultCode=0有效数据，正常处理
+
+
+
+
+
+
+
+ // if (res.code) {
+    //   wx.getUserInfo({
+    //     withCredentials: true,
+    //     success: function (res_user) {
+    //       wx.request({
+    //         url: 'http://39.107.110.179:8080/summary/user/getUserCount.do',
+    //         data: {
+    //           code: res.code,
+    //           encryptedData: res_user.encryptedData,
+    //           iv: res_user.iv
+    //         },
+    //         method: "GET",
+    //         header: {
+    //           'content-type': 'application/json'
+    //         },
+    //         success: function (res) {
+    //           this.setData({
+    //             nickName: res.data.nickName,
+    //             avatarUrl: res.data.avatarUrl,
+    //           })
+    //           // wx.setStorageSync('openId', res.data.openId);
+
+    //         }
+    //       })
+    //     }
+    //   })
+    // }
+
+
+
+
+106.120.244.231   
+root   
+2h7PpkIn

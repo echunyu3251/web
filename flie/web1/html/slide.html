@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>尚德2017年度报告</title>
+		<link rel="stylesheet" href="../css/style.css" />
+		<link rel="stylesheet" href="../css/swiper-4.1.0.min.css" />
+		<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+		<script type="text/javascript" src="../js/jquery-2.1.0.js"></script>
+		<script type="text/javascript" src="../js/swiper-4.1.0.min.js"></script>
+		<script type="text/javascript" src="../js/flexible.js"></script>
+		<style type="text/css">
+			.swiper-container {
+				height: 16.4rem;
+			}
+			
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.swiper-slide {
+				height: 16.4rem;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="swiper-container">
+			<div class="swiper-wrapper wrap">
+				<div class="swiper-slide">
+					<div class="page_1 s1">
+						<!--<span class="sj1">哈哈哈哈哈哈</span>-->
+						<!--<span class="sj2">12345</span>
+							<span class="sj3">12345</span>-->
+						<div id="down"></div>
+					</div>
+				</div>
+				<div class="swiper-slide s2">
+					<div class="page_2">
+						<div id="down"></div>
+						<div id="top"></div>
+						<!--<span class="sj4">12345</span>-->
+						<!--<span class="sj5">12345</span>-->
+					</div>
+				</div>
+				<div class="swiper-slide s3">
+					<div class="page_3">
+						<div id="down"></div>
+						<div id="top"></div>
+						<!--<span class="sj6">12345</span>-->
+					</div>
+				</div>
+
+				<div class="swiper-slide s4">
+					<div class="page_4">
+						<div id="down"></div>
+						<div id="top"></div>
+						<!--<span class="sj7">12345</span>-->
+					</div>
+				</div>
+				<div class="swiper-slide s5">
+					<div class="page_5">
+						<div id="down"></div>
+						<div id="top"></div>
+						<!--<span class="sj8">12345</span>-->
+						<!--<span class="sj9">12345</span>-->
+					</div>
+				</div>
+				<div class="swiper-slide s7  ">
+					<div class="page_7 stop-swiping">
+						<div class="btn" id="kq">
+							<img src="../images/文字页6_03.png" id="kq" />
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	</body>
+
+</html>
+<script>
+	var mySwiper = new Swiper('.swiper-container', {
+		direction: 'vertical',
+		noSwipingClass: 'stop-swiping',
+	})
+//	if(sessionStorage.getItem("setData") === null) {
+//		setTimeout(function() {
+//			window.location.href = "index.html"
+//		})
+//	}
+	$(function() {
+		var getData = sessionStorage.getItem("setData");
+		$.ajax({
+			type: "get",
+			url: "https://rb.sunlands.com/summary/user/getResult.do",
+			async: true,
+			dataType: 'json',
+			data: {
+				email: getData
+			},
+			success: function(data) {
+				console.log(data)
+				//1页
+				//学院
+				if(data.collegeInfo.name === "") {
+					$(".page_1").append("<span class='sj1'> 数以万计 </span>")
+
+				} else {
+					$(".page_1").append("<span class='sj1'>" + data.collegeInfo.name + "</span>")
+				}
+				//多少位家人
+				if(data.collegeInfo.totalCount === 0) {
+					$(".page_1").append("<span class='sj2'> 数以万计</span>")
+				} else {
+					$(".page_1").append("<span class='sj2'>" + data.collegeInfo.totalCount + "</span>")
+				}
+				//多少位学生
+				if(data.collegeInfo.serveCount === 0) {
+					$(".page_1").append("<span class='sj3'> 数以万计</span>")
+				} else {
+					$(".page_1").append("<span class='sj3'>" + data.collegeInfo.serveCount + "</span>")
+				}
+
+				//2页
+				//学科数
+				if(data.collegeInfo.subjectCount === 0) {
+
+					$(".page_2").append("<span class='sj4'> 数以万计  </span>")
+				} else {
+					$(".page_2").append("<span class='sj4'>" + data.collegeInfo.subjectCount + "</span>")
+				}
+				//帮助多少学生
+				if(data.collegeInfo.passCount === 0) {
+					$(".page_2").append("<span class='sj5'> 数以万计  </span>")
+				} else {
+					$(".page_2").append("<span class='sj5'>" + data.collegeInfo.passCount + "</span>")
+				}
+				//3页
+				//新生
+				if(data.teacherInfo.serveCount === 0) {
+					$(".page_3").append("<span class='sj6'> 数以万计  </span>")
+				} else {
+					$(".page_3").append("<span class='sj6'>" + data.teacherInfo.serveCount + "</span>")
+				}
+
+				//4页
+				//在服学生
+				if(data.collegeInfo.serveringCount === 0) {
+					$(".page4").append("<span class='sj7'> 数以万计  </span>")
+				} else {
+					$(".page_4").append("<span class='sj7'>" + data.collegeInfo.serveringCount + "</span>")
+				}
+
+				//5页
+				//帮助多少学生
+				if(data.teacherInfo.serveCount === 0) {
+					$(".page_5").append("<span class='sj8'> 数以万计  </span>")
+				} else {
+					$(".page_5").append("<span class='sj8'>" + data.teacherInfo.serveCount + "</span>")
+				}
+				//建立多少联络   全年会话量
+				if(data.teacherInfo.callCount === 0) {
+					$(".page_5").append("<span class='sj9'> 数以万计  </span>")
+				} else {
+					$(".page_5").append("<span class='sj9'>" + data.teacherInfo.callCount + "</span>")
+				}
+
+				var setImg = localStorage.setItem("setImg", data.teacherInfo.resultImg)
+			}
+		});
+		$("#kq").click(function() {
+			//			console.log(1)
+			window.location.href = "fenxiang.html"
+		})
+
+	})
+	$.ajax({
+		type: "get",
+		url: "https://rb.sunlands.com/summary/user/getWXConfig.do?url=https://rb.sunlands.com/slide.html",
+		async: true,
+		data: {},
+		dataType: "json",
+		success: function(data) {
+			var appId = data.appId
+			var nonceStr = data.nonceStr
+			var signature = data.signature
+			var timestamp = data.timestamp
+			wx.config({
+				debug: false, // 开启调试模式,调用的所有api的返回值会在客户端出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+				appId: appId, // 必填，公众号的唯一标识
+				timestamp: timestamp, // 必填，生成签名的时间戳
+				nonceStr: nonceStr, // 必填，生成签名的随机串
+				signature: signature,
+				jsApiList: ['checkJsApi', 'onMenuShareTimeline', 'onMenuShareAppMessage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+			});
+		}
+	});
+
+	wx.ready(function() {
+		wx.hideOptionMenu();
+		wx.showOptionMenu();
+		wx.onMenuShareTimeline({
+			title: '我的尚德2017年度报告',
+			desc: "亲爱的家人，这一年，尚德有你也有我。",
+			link: 'https://rb.sunlands.com',
+			imgUrl: 'https://rb.sunlands.com/images/logo.jpg',
+			trigger: function(res) {},
+			success: function(res) {},
+			cancel: function(res) {},
+			fail: function(res) {}
+		});
+		wx.onMenuShareAppMessage({
+			title: '我的尚德2017年度报告',
+			desc: "亲爱的家人，这一年，尚德有你也有我。",
+			link: 'https://rb.sunlands.com',
+			imgUrl: 'https://rb.sunlands.com/images/logo.jpg',
+			trigger: function(res) {},
+			success: function(res) {},
+			cancel: function(res) {},
+			fail: function(res) {}
+		});
+	});
+</script>
